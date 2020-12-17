@@ -1,5 +1,10 @@
 import pages from '../pages.json'
 
+function siteLink(path) {
+  if (window.location.href.includes('localhost')) return path
+  else return `/ai-demos${path}`
+}
+
 export function baseSetup(currentPage) {
   // sets up navigation
   var navEl = document.createElement('div')
@@ -9,7 +14,7 @@ export function baseSetup(currentPage) {
   var introA = document.createElement('a')
   introA.textContent = pages[0].name
   if (currentPage == 'index') introA.className = 'current'
-  introA.href = "/"
+  introA.href = siteLink("/")
   introNav.appendChild(introA)
   navEl.appendChild(introNav)
   var categories = {}
@@ -28,7 +33,7 @@ export function baseSetup(currentPage) {
     catEl.appendChild(catHeader)
     categories[c].forEach(p => {
       var pageEl = document.createElement('a')
-      pageEl.href = `/${p.filename}.html`
+      pageEl.href = siteLink(`/${p.filename}.html`)
       if (currentPage == p.filename) pageEl.className = 'current'
       pageEl.textContent = p.name
       catEl.appendChild(pageEl)
