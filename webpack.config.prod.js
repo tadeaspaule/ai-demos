@@ -1,6 +1,6 @@
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
 var package = require('./package.json')
 const pages =  require('./pages.json')
 var entries = {vendor: Object.keys(package.dependencies)}
@@ -19,13 +19,8 @@ module.exports = {
     }]
   },
   optimization: {
-    minimizer: [new UglifyJSPlugin({
-      uglifyOptions: {
-        output: {
-          comments: false //use it for removing comments like "/*! ... */"
-        }
-      }
-    })],
+    minimize: true,
+    minimizer: [new TerserPlugin()],
     splitChunks: {
       chunks: 'all',
 			name: 'shared'

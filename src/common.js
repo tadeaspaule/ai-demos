@@ -1,7 +1,7 @@
 import pages from '../pages.json'
 
 function siteLink(path) {
-  if (window.location.href.includes('localhost')) return path
+  if (process.env.NODE_ENV == 'development') return path
   else return `/ai-demos${path}`
 }
 
