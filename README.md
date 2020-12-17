@@ -3,6 +3,9 @@ Interactive demos of various AI concepts such as image classification or reinfor
 
 You can visit the deployed version at https://tadeaspaule.com/ai-demos/
 
+### Current list of demos
+- Handwritten digit classifier
+
 ### How to get this running on your machine
 
 Install dependencies:
