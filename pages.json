@@ -1,0 +1,11 @@
+[
+  {
+    "filename": "index",
+    "name": "Introduction"
+  },
+  {
+    "filename": "mnist",
+    "name": "Handwritten digits",
+    "category": "Image Classification"
+  }
+]

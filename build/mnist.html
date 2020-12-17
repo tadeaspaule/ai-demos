@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="assets/styles.css">
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<title>AI demos - handwritten digits</title>
+	</head>
+
+	<body>
+		<h2>Handwritten digits</h2>
+		<p>
+			One of the simplest examples of image classification; low-resolution handwritten digits. Try it out!
+		</p>
+		<div class="fr">
+			<div id="pixi-parent" class="fc fac">
+				<span class="info">Predictions are near-instant. Delays are for better UX; drawing a 4 for example :)</span>
+			</div>
+			<div id="prediction">
+			</div>
+		</div>
+		<p style="margin-top: 50px;">
+			Classifiers like this one use a softmax function. You can think of it a probability distribution; it gives a value for each label, and together they sum up to one.
+			You then typically take the label with the highest value and consider that your classification. You can also use that value for reasoning about the AI's confidence for example.
+		</p>
+	</body>
+</html>

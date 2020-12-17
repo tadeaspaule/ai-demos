@@ -1,8 +1,22 @@
 body {
   margin: 0;
-  padding: 0;
+  padding: 20px;
   overflow: hidden;
-  display:flex;flex-direction:column;justify-content: center;align-items: center;position:absolute;top:0;bottom:0;left:0;right:0;
+  display:flex;flex-direction:column;align-items: center;position:absolute;top:0;bottom:0;left:0;right:0;
+}
+h1,h2,h3,h4 {
+  margin: 5px 0px;
+  text-transform: lowercase;
+}
+a {
+  text-transform: lowercase;
+}
+@font-face {
+  font-family: raleway;
+  src: url(raleway.ttf);
+}
+* {
+  font-family: raleway;
 }
 .fc {
   display: flex;
@@ -38,11 +52,78 @@ body {
   opacity: 0.4;
   cursor: default;
 }
-#pixi-parent {
+p {
+  width: 40%;
+  min-width: 500px;
+}
+.intro-links .fr {
+  margin-top: 10px;
+}
+.intro-links .fr img {
+  margin-right: 5px;
+}
+#pixi-parent canvas {
   border: 1px solid black;
 }
 .line {
   fill: none;
   stroke: #5555ff;
   stroke-width: 2;
+}
+span.info {
+  font-size: 14px;
+  color: #000a;
+}
+h4 {
+  margin: 0; padding: 0;
+  color: #444;
+}
+a {
+  color:#111166;
+  text-decoration: none;
+}
+.nav-status {
+  position: absolute;
+  top:0;
+  left:0;
+  padding: 15px;
+}
+.nav-status i {
+  margin-right: 10px;
+  font-size: 30px;
+}
+.nav {
+  position: absolute;
+  top:0;
+  bottom:0;
+  width:200px;
+  background:#fff;
+  z-index: 2;
+  left:-220px;
+  transition: left 0.4s;
+  padding: 10px;
+}
+.nav.shown {
+  left:0;
+}
+.nav-cat {
+  margin-top: 5px;
+}
+.nav .nav-cat a {
+  margin-left: 20px;
+}
+.click-catcher {
+  position: absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s;
+  background: #000;
+}
+.click-catcher.shown {
+  opacity: 0.1;
+  z-index: 1;
 }
