@@ -1,8 +1,9 @@
-## PixiJS v5 Set Up With NPM and Webpack
+## ai-demos
+Interactive demos of various AI concepts such as image classification or reinforcement learning. I plan to periodically update this when I have interesting new models and demos to showcase :smile:
 
-Here you can see how to set up your PixiJS v5 project using NPM, Webpack and separate consumable PixiJS components.
+You can visit the deployed version at https://tadeaspaule.com/ai-demos/
 
-Just for example I made a spinning sprite to show how to use Sprite class which is imported as a separate component.
+### How to get this running on your machine
 
 Install dependencies:
 ```
