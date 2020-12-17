@@ -3,8 +3,10 @@ Interactive demos of various AI concepts such as image classification or reinfor
 
 You can visit the deployed version at https://tadeaspaule.com/ai-demos/
 
+You can find code of all agents used at https://github.com/tadeaspaule/ai-demos-notebooks
+
 ### Current list of demos
-- Handwritten digit classifier
+- Handwritten digit classifier : [demo](https://tadeaspaule.com/ai-demos/mnist.html) | [code](https://github.com/tadeaspaule/ai-demos-notebooks/tree/master/mnist)
 
 ### How to get this running on your machine
 
