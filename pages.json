@@ -1,11 +1,20 @@
 [
   {
     "filename": "index",
-    "name": "Introduction"
+    "name": "AI demos"
   },
   {
     "filename": "mnist",
     "name": "Handwritten digits",
-    "category": "Image Classification"
+    "category": "Image Classification",
+    "notebook": "https://github.com/tadeaspaule/ai-demos-notebooks/blob/master/cnn-handwritten-digit-classifier.ipynb",
+    "dataset": "https://www.tensorflow.org/api_docs/python/tf/keras/datasets/mnist"
+  },
+  {
+    "filename": "catgan",
+    "name": "Cat faces",
+    "category": "Image Generation",
+    "notebook": "https://github.com/tadeaspaule/ai-demos-notebooks/blob/master/GAN-cat-faces.ipynb",
+    "dataset": "https://www.kaggle.com/spandan2/cats-faces-64x64-for-generative-models"
   }
 ]

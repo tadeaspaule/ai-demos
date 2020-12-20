@@ -3,7 +3,8 @@ const HTMLWebpackPlugin = require('html-webpack-plugin')
 var package = require('./package.json')
 const pages =  require('./pages.json')
 var entries = {vendor: Object.keys(package.dependencies)}
-pages.forEach(p => entries[p.filename] = `./src/${p.filename}.js`)
+entries.index = './src/index.js'
+pages.slice(1).forEach(p => entries[p.filename] = `./src/${p.filename}/modelLogic.js`)
 module.exports = {
 	mode: 'development',
 	entry: entries,
@@ -20,6 +21,9 @@ module.exports = {
 		...pages.map(p => new HTMLWebpackPlugin({
 			template: `build/${p.filename}.html`,
 			filename: `${p.filename}.html`,
+			title: `AI demos - ${p.name}`,
+      page: p,
+      lastPage: pages[pages.length-1],
 			chunks: ['vendor','shared',p.filename]
 		}))
 	],

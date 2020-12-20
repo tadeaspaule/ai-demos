@@ -6,24 +6,58 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="assets/styles.css">
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-		<title>AI demos - handwritten digits</title>
+		<title>AI demos - <%= htmlWebpackPlugin.options.page.name %></title>
 	</head>
 
 	<body>
-		<h2>Handwritten digits</h2>
-		<p>
-			One of the simplest examples of image classification; low-resolution handwritten digits. Try it out!
-		</p>
-		<div class="fr">
-			<div id="pixi-parent" class="fc fac">
-				<span class="info">Predictions are near-instant. Delays are for better UX; drawing a 4 for example :)</span>
+		<h2><%= htmlWebpackPlugin.options.page.name %></h2>
+		<div class="fr demo-links">
+			<div class="fr fac">
+				<img src="assets/githubicon.png" height="16px">
+				<a href="https://github.com/tadeaspaule/ai-demos/src/<%= htmlWebpackPlugin.options.page.filename %>" target="_blank">This demo's code</a>
 			</div>
-			<div id="prediction">
+			<div class="fr fac">
+				<img src="assets/githubicon.png" height="16px">
+				<a href="<%= htmlWebpackPlugin.options.page.notebook %>" target="_blank">This AI's code</a>
+			</div>
+			<div class="fr fac">
+				<i class="material-icons">photo_library</i>
+				<a href="<%= htmlWebpackPlugin.options.page.dataset %>" target="_blank">Dataset used</a>
 			</div>
 		</div>
-		<p style="margin-top: 50px;">
-			Classifiers like this one use a softmax function. You can think of it a probability distribution; it gives a value for each label, and together they sum up to one.
-			You then typically take the label with the highest value and consider that your classification. You can also use that value for reasoning about the AI's confidence for example.
+		<h3>First something to play with...</h3>
+		<div class="fr">
+			<div id="pixi-parent" class="fc fac">
+				<span class="info">Try drawing a digit here</span>
+			</div>
+			<div id="prediction" class="fr">
+				<h4>0<span>(0%)</span></h4>
+				<h4>1<span>(0%)</span></h4>
+				<h4>2<span>(0%)</span></h4>
+				<h4>3<span>(0%)</span></h4>
+				<h4>4<span>(0%)</span></h4>
+				<h4>5<span>(0%)</span></h4>
+				<h4>6<span>(0%)</span></h4>
+				<h4>7<span>(0%)</span></h4>
+				<h4>8<span>(0%)</span></h4>
+				<h4>9<span>(0%)</span></h4>
+			</div>
+		</div>
+		<h3 style="margin-top: 50px;">... then some explanations</h3>
+		<h4>How does it work?</h4>
+		<p>
+			Image classifiers often use <strong>convolution layers</strong>.
+			To put it simply, these look at a neighbourhood of inputs and "summarize" what they see into a higher-dimensional representation.
+			By chaining multiple after each other, you can learn high level features that then help classification.
+			For example, the first layer might learn to detect lines, edges or other local features,
+			while the later ones will put this information together and learn representations of shapes, such as where a cat's eyes are, etc.
+		</p>
+		<h4>The softmax function</h4>
+		<p>
+			Classifiers like this one tend to use a softmax function as output. You can think of it a probability distribution;
+			it gives a value for each label, and then normalizes them so they sum up to one.
+			You then typically take the label with the highest value and consider that your classification.
+			You can also use that value for reasoning about the AI's confidence for example.
 		</p>
 	</body>
 </html>

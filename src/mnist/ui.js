@@ -14,7 +14,6 @@ for (var y = 0; y < 28; y++) {
 }
 export function setup(startDrawingCallback) {
   setupDrawing(startDrawingCallback)
-  setupD3()
 }
 function setupDrawing (startDrawingCallback) {
   // App with width and height of the page
@@ -71,65 +70,18 @@ export function clearDrawing () {
     }
   }
 }
-var margin = {top: 30, right: 30, bottom: 30, left: 50},
-  width = w * 2 - margin.left - margin.right,
-  height = h - margin.top - margin.bottom,
-  xSelector = margin.left + width;
-var dynamicLine, line;
-function setupD3 () {
-  var xScale = d3.scaleLinear()
-  .range([0, width]);
 
-  var yScale = d3.scaleLinear()
-  .range([height, 0]);
-
-  var xAxis = d3.axisBottom()
-
-  var yAxis = d3.axisLeft()
-
-  line = d3.line()
-    .curve(d3.curveMonotoneX)
-    .x(function(d, i) { return xScale(i); })
-    .y(function(d, i) { return yScale(d); });
-
-  var svg = d3.select("#prediction").append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-  svg.append("text")
-    .attr("x", (width / 2))
-    .attr("y", 0 - (margin.top / 2))
-    .attr("text-anchor", "middle")
-    .text("Prediction");
-  xScale.domain([0, 9]);
-  yScale.domain([0,1]);
-  xAxis.scale(xScale);
-  yAxis.scale(yScale);
-
-  svg.append("g")
-  .attr("class", "x axis")
-  .attr("transform", "translate(0," + height + ")")
-  .call(xAxis);
-
-  svg.append("g")
-  .attr("class", "y axis")
-  .call(yAxis)
-  .append("text")
-  .attr("transform", "rotate(-90)")
-  .attr("y", 6)
-  .attr("dy", ".71em")
-  .style("text-anchor", "end")
-  .text("Value");
-
-  dynamicLine = svg.append("path")
-  .attr('class', 'line')
-  .attr("d", line([0,0,0,0,0,0,0,0,0,0]))
-}
-export function updateLineChart(values) {
-  dynamicLine
-    .transition()
-    .duration(750)
-    .attr("d",line(values))
+var predElems = document.getElementById('prediction').getElementsByTagName('h4')
+export function updatePredictionUI(values) {
+  var counter = 0
+  const maxSize = 80;
+  const minVal = 0.10;
+  for (const pred of predElems) {
+    var v = Math.sqrt(values[counter])
+    if (values[counter] < 0.02) v = 0
+    else if (v < minVal) v = minVal
+    pred.style.fontSize = `${v * maxSize}px`
+    pred.getElementsByTagName('span')[0].textContent = `(${Math.round(values[counter] * 100)}%)`
+    counter ++
+  }
 }

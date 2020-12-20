@@ -19,14 +19,9 @@
 			Check the navigation on the left for links to each demo. All the code is also available on GitHub.
 		</p>
 		<div class="fc intro-links">
-			<div class="fr fac btn">
-				<img src="assets/githubicon.png" height="24px">
-				<a href="https://github.com/tadeaspaule/ai-demos" target="_blank">This website's code</a>
-			</div>
-			<div class="fr fac btn">
-				<img src="assets/githubicon.png" height="24px">
-				<a href="https://github.com/tadeaspaule/ai-demos-notebooks" target="_blank">AI model training code</a>
-			</div>
+			<a href="<%= htmlWebpackPlugin.options.lastPage.filename %>.html">Latest demo: <%= htmlWebpackPlugin.options.lastPage.name %> (<%= htmlWebpackPlugin.options.lastPage.category %>)</a>
+			<a href="https://github.com/tadeaspaule/ai-demos" target="_blank">This website's code</a>
+			<a href="https://github.com/tadeaspaule/ai-demos-notebooks" target="_blank">AI model training code</a>
 		</div>
 	</body>
 </html>
