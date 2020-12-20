@@ -48,6 +48,7 @@ div.btn {
   border-radius: 4px;
   padding: 10px;
   background: #fff;
+  text-align: center;
   transition: background-color 0.3s;
 }
 div.btn:hover {
@@ -64,8 +65,8 @@ p {
 .intro-links .fr {
   margin-top: 10px;
 }
-.intro-links .fr img {
-  margin-right: 5px;
+.intro-links .fr img, .intro-links .fr, i {
+  margin-right: 8px;
 }
 .demo-links .fr {
   margin: 0px 5px;
