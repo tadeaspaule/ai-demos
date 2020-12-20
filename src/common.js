@@ -61,9 +61,13 @@ export function baseSetup(currentPage) {
   i.addEventListener('click', function () {
     navEl.classList.add('shown')
     clickCatcher.classList.add('shown')
+    clickCatcher.style.zIndex = 1
   })
   clickCatcher.addEventListener('click',function () {
     navEl.classList.remove('shown')
     clickCatcher.classList.remove('shown')
+    setTimeout(() => {
+      clickCatcher.style.zIndex = -1
+    }, 400);
   })
 }
