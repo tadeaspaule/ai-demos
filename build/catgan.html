@@ -14,7 +14,7 @@
 		<div class="fr demo-links">
 			<div class="fr fac">
 				<img src="assets/githubicon.png" height="16px">
-				<a href="https://github.com/tadeaspaule/ai-demos" target="_blank">This demo's code</a>
+				<a href="https://github.com/tadeaspaule/ai-demos/src/<%= htmlWebpackPlugin.options.page.filename %>" target="_blank">This demo's code</a>
 			</div>
 			<div class="fr fac">
 				<img src="assets/githubicon.png" height="16px">
@@ -52,7 +52,7 @@
 		</p>
 		<h4>The training process</h4>
 		<div class="fr fjc">
-			<img src="assets/images/catgan-training.gif" alt="this slowpoke moves"  width="250"/>
+			<img src="assets/images/catgan-training.gif" width="250"/>
 			<p>
 				On the left you can see how the generator does progressively better as it trains more.
 				I was able to do this by following Tensorflow's wonderful <a href="https://www.tensorflow.org/tutorials/generative/dcgan" target="_blank">tutorial on GANs</a>,
