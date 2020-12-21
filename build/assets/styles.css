@@ -1,8 +1,11 @@
 body {
-  margin: 0;
-  padding: 20px;
-  overflow: auto;
-  display:flex;flex-direction:column;align-items: center;position:absolute;top:0;bottom:0;left:0;right:0;
+  margin: 0;padding:0;
+  display:flex;flex-direction:column;align-items: center;position:absolute;top:0;left:0;right:0;bottom:0;
+}
+.content {
+  overflow:auto;
+  padding: 10px;
+  display:flex;flex-direction:column;align-items: center;
 }
 h1,h2,h3,h4 {
   margin: 5px 0px;
@@ -65,7 +68,7 @@ p {
 .intro-links .fr {
   margin-top: 10px;
 }
-.intro-links .fr img, .intro-links .fr, i {
+.intro-links .fr img, .intro-links .fr, .intro-links i {
   margin-right: 8px;
 }
 .demo-links .fr {
@@ -106,14 +109,23 @@ a {
   text-decoration: none;
 }
 .nav-status {
-  position: absolute;
-  top:0;
-  left:0;
-  padding: 15px;
+  background:#fff;
+  width:100%;
+  border-bottom: 1px solid #0002;
 }
-.nav-status i {
-  margin-right: 10px;
+.nav-status h2 {
+  margin-right: 20px;
+}
+.nav-status i.btn {
+  margin-left: 15px;
+  margin-right: 15px;
   font-size: 30px;
+}
+.nav-status .picturelink {
+  margin-right: 8px;
+}
+.nav-status .picturelink img, .nav-status .picturelink i {
+  margin-right: 4px;
 }
 .nav {
   position: absolute;

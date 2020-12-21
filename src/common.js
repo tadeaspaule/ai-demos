@@ -6,6 +6,7 @@ function siteLink(path) {
 }
 
 export function baseSetup(currentPage) {
+  var pageData = pages.find(p => p.filename == currentPage)
   // sets up navigation
   var navEl = document.createElement('div')
   navEl.className = 'nav'
@@ -42,23 +43,19 @@ export function baseSetup(currentPage) {
   })
   document.body.appendChild(navEl)
   
-  // setup navigation button in top left
-  var topRightNav = document.createElement('div')
-  topRightNav.className = 'nav-status fr fac'
-  var i = document.createElement('i')
-  i.className = 'material-icons btn'
-  i.textContent = 'list'
-  topRightNav.appendChild(i)
-  var currentH4 = document.createElement('h4')
-  currentH4.textContent = pages.find(p => p.filename == currentPage).name
-  topRightNav.appendChild(currentH4)
-  document.body.appendChild(topRightNav)
+  // set up the top bar (navigation button, name, links)
+
+  // navigation button
+  var topNav = document.createElement('div')
+  topNav.className = 'nav-status fr fac'
+  var navListIcon = createMaterialIcon('list','btn')
+  topNav.appendChild(navListIcon)
 
   // setup open/close nav behavior
   var clickCatcher = document.createElement('div')
   clickCatcher.className = 'click-catcher'
   document.body.appendChild(clickCatcher)
-  i.addEventListener('click', function () {
+  navListIcon.addEventListener('click', function () {
     navEl.classList.add('shown')
     clickCatcher.classList.add('shown')
     clickCatcher.style.zIndex = 1
@@ -70,4 +67,65 @@ export function baseSetup(currentPage) {
       clickCatcher.style.zIndex = -1
     }, 400);
   })
+
+  // current page name
+  var currentH2 = document.createElement('h2')
+  currentH2.textContent = pageData.name
+  topNav.appendChild(currentH2)
+
+  // useful links
+  if (currentPage != 'index') topNav.appendChild(createGithubLink(`https://github.com/tadeaspaule/ai-demos/tree/master/src/${pageData.filename}`,'demo code'))
+  if (pageData.notebook) topNav.appendChild(createGithubLink(pageData.notebook,'ai code'))
+  if (pageData.dataset) {
+    var datasetIcon = createMaterialIcon('photo_library')
+    datasetIcon.style.fontSize = '20px'
+    topNav.appendChild(createPictureLink(pageData.dataset,'dataset',datasetIcon))
+  }
+  
+  document.body.insertBefore(topNav,document.body.children[0])
+  
+  /*
+  <h2><%= htmlWebpackPlugin.options.page.name %></h2>
+  <div class="fr demo-links">
+    <div class="fr fac">
+      <img src="assets/githubicon.png" height="16px">
+      <a href="https://github.com/tadeaspaule/ai-demos/tree/master/src/<%= htmlWebpackPlugin.options.page.filename %>" target="_blank">This demo's code</a>
+    </div>
+    <div class="fr fac">
+      <img src="assets/githubicon.png" height="16px">
+      <a href="<%= htmlWebpackPlugin.options.page.notebook %>" target="_blank">This AI's code</a>
+    </div>
+    <div class="fr fac">
+      <i class="material-icons">photo_library</i>
+      <a href="<%= htmlWebpackPlugin.options.page.dataset %>" target="_blank">Dataset used</a>
+    </div>
+  </div>
+  */
+}
+
+function createGithubLink (href, text) {
+  var githubImg = document.createElement('img')
+  githubImg.src = 'assets/githubicon.png'
+  githubImg.height = 16
+  return createPictureLink(href,text,githubImg)
+}
+
+function createPictureLink (href, text, pictureElem) {
+  var outerDiv = document.createElement('div')
+  outerDiv.className = 'fr fac picturelink'
+  outerDiv.appendChild(pictureElem)
+  var linkTag = document.createElement('a')
+  linkTag.href = href
+  linkTag.textContent = text
+  linkTag.target = '_blank'
+  outerDiv.appendChild(linkTag)
+  return outerDiv
+}
+
+function createMaterialIcon (iconName, classes) {
+  if (!classes) classes = ''
+  var i = document.createElement('i')
+  i.textContent = iconName
+  i.className = `material-icons ${classes}`
+  return i
 }

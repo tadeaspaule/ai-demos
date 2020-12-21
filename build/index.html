@@ -10,26 +10,24 @@
 	</head>
 
 	<body>
-		<h2>Interactive AI demos</h2>
-		<p>
-			Hi! I'm Tadeas. This site contains interactive showcases of various concepts in AI.
-			Making them is a good way for me to learn these concepts, and hopefully they will be interesting for you too.
-		</p>
-		<p>
-			Check the navigation on the left for links to each demo. All the code is also available on GitHub.
-		</p>
-		<div class="fc intro-links">
-			<div class="fr btn">
-				<i class="material-icons" style="font-size:20px">toys</i>
-				<a href="<%= htmlWebpackPlugin.options.lastPage.filename %>.html">Latest demo: <%= htmlWebpackPlugin.options.lastPage.name %> (<%= htmlWebpackPlugin.options.lastPage.category %>)</a>
-			</div>
-			<div class="fr btn">
-				<img src="assets/githubicon.png" height="20">
-				<a href="https://github.com/tadeaspaule/ai-demos" target="_blank">This website's code</a>
-			</div>
-			<div class="fr btn">
-				<img src="assets/githubicon.png" height="20">
-				<a href="https://github.com/tadeaspaule/ai-demos-notebooks" target="_blank">AI model training code</a>
+		<div class="content">
+			<p>
+				Hi! I'm Tadeas. This site contains interactive showcases of various concepts in AI.
+				Making them is a good way for me to learn these concepts, and hopefully they will be interesting for you too.
+			</p>
+			<div class="fc intro-links">
+				<div class="fr btn">
+					<i class="material-icons" style="font-size:20px">toys</i>
+					<a href="<%= htmlWebpackPlugin.options.lastPage.filename %>.html">Latest demo: <%= htmlWebpackPlugin.options.lastPage.name %> (<%= htmlWebpackPlugin.options.lastPage.category %>)</a>
+				</div>
+				<div class="fr btn">
+					<img src="assets/githubicon.png" height="20">
+					<a href="https://github.com/tadeaspaule/ai-demos" target="_blank">This website's code</a>
+				</div>
+				<div class="fr btn">
+					<img src="assets/githubicon.png" height="20">
+					<a href="https://github.com/tadeaspaule/ai-demos-notebooks" target="_blank">AI model training code</a>
+				</div>
 			</div>
 		</div>
 	</body>
