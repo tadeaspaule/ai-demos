@@ -9,6 +9,7 @@ export function baseSetup() {
   var hrefParts = window.location.href.split('/')
   var currentPage = hrefParts[hrefParts.length-1]
   currentPage = currentPage.replace('.html','')
+  if (currentPage.length == 0) currentPage = 'index'
   var pageData = pages.find(p => p.filename == currentPage)
   // sets up navigation
   var navEl = document.createElement('div')
