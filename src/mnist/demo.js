@@ -2,7 +2,7 @@ import * as tf from '@tensorflow/tfjs'
 import _ from 'lodash'
 import * as ui from './ui.js'
 import {baseSetup} from '../common.js'
-baseSetup('mnist')
+baseSetup()
 async function loadModel() {
   const model = await tf.loadLayersModel(`assets/classifier-model/model.json`);
   return model

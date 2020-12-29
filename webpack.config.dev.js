@@ -4,7 +4,7 @@ var package = require('./package.json')
 const pages =  require('./pages.json')
 var entries = {vendor: Object.keys(package.dependencies)}
 entries.index = './src/index.js'
-pages.slice(1).forEach(p => entries[p.filename] = `./src/${p.filename}/modelLogic.js`)
+pages.slice(1).forEach(p => entries[p.filename] = `./src/${p.filename}/demo.js`)
 module.exports = {
 	mode: 'development',
 	entry: entries,
