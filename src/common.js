@@ -5,7 +5,10 @@ function siteLink(path) {
   else return `/ai-demos${path}`
 }
 
-export function baseSetup(currentPage) {
+export function baseSetup() {
+  var hrefParts = window.location.href.split('/')
+  var currentPage = hrefParts[hrefParts.length-1]
+  currentPage = currentPage.replace('.html','')
   var pageData = pages.find(p => p.filename == currentPage)
   // sets up navigation
   var navEl = document.createElement('div')
@@ -83,24 +86,6 @@ export function baseSetup(currentPage) {
   }
   
   document.body.insertBefore(topNav,document.body.children[0])
-  
-  /*
-  <h2><%= htmlWebpackPlugin.options.page.name %></h2>
-  <div class="fr demo-links">
-    <div class="fr fac">
-      <img src="assets/githubicon.png" height="16px">
-      <a href="https://github.com/tadeaspaule/ai-demos/tree/master/src/<%= htmlWebpackPlugin.options.page.filename %>" target="_blank">This demo's code</a>
-    </div>
-    <div class="fr fac">
-      <img src="assets/githubicon.png" height="16px">
-      <a href="<%= htmlWebpackPlugin.options.page.notebook %>" target="_blank">This AI's code</a>
-    </div>
-    <div class="fr fac">
-      <i class="material-icons">photo_library</i>
-      <a href="<%= htmlWebpackPlugin.options.page.dataset %>" target="_blank">Dataset used</a>
-    </div>
-  </div>
-  */
 }
 
 function createGithubLink (href, text) {
@@ -128,4 +113,8 @@ function createMaterialIcon (iconName, classes) {
   i.textContent = iconName
   i.className = `material-icons ${classes}`
   return i
+}
+
+export function randint(min,max) {
+  return Math.floor(min + Math.random() * (max-min))
 }
