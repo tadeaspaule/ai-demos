@@ -13,6 +13,8 @@ h1,h2,h3,h4 {
 }
 a {
   text-transform: lowercase;
+  color:#4444aa;
+  text-decoration: none;
 }
 @font-face {
   font-family: raleway;
@@ -104,10 +106,6 @@ h4 {
 #prediction h4 span {
   font-size: 50%;
 }
-a {
-  color:#111166;
-  text-decoration: none;
-}
 .nav-status {
   background:#fff;
   width:100%;
@@ -170,4 +168,36 @@ a {
 }
 .cat-canvases canvas {
   margin: 0px 10px;
+}
+.snake-info-section {
+  flex: 0;
+  width: 500px;
+  margin-left: 20px;
+}
+.snake-selection {
+  display: inline-block;
+  cursor: pointer;
+  margin-right: 15px;
+  color: #00000088;
+  font-size: 14px;
+  transition: color 0.3s, font-size 0.3s;
+}
+.snake-selection.selected {
+  color: #000000;
+  font-size: 17px;
+}
+.underline {
+  text-decoration: underline;
+}
+#snake-env-controls {
+  margin-left:15px;
+}
+#snake-env-controls span {
+  margin: 0px 2px;
+  color: #00000088;
+  cursor: pointer;
+}
+#snake-env-controls span.selected {
+  margin: 0px 5px;
+  color: #000000;
 }

@@ -16,5 +16,10 @@
     "category": "Image Generation",
     "notebook": "https://github.com/tadeaspaule/ai-demos-notebooks/blob/master/GAN-cat-faces.ipynb",
     "dataset": "https://www.kaggle.com/spandan2/cats-faces-64x64-for-generative-models"
+  },
+  {
+    "filename": "unintelligent-snakes",
+    "name": "(un)intelligent snakes",
+    "category": "\"AI\""
   }
 ]
