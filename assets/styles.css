@@ -1,0 +1,204 @@
+body {
+  margin: 0;padding:0;
+  display:flex;flex-direction:column;align-items: center;position:absolute;top:0;left:0;right:0;bottom:0;
+}
+.content {
+  overflow:auto;
+  padding: 10px;
+  display:flex;flex-direction:column;align-items: center;
+}
+h1,h2,h3,h4 {
+  margin: 5px 0px;
+  text-transform: lowercase;
+}
+a {
+  text-transform: lowercase;
+  color:#3366aa;
+  text-decoration: none;
+  font-weight: 500;
+}
+@font-face {
+  font-family: raleway;
+  src: url(raleway.ttf);
+}
+* {
+  font-family: raleway;
+}
+.fc {
+  display: flex;
+  flex-direction: column;
+}
+.fr {
+  display: flex;
+  flex-direction: row;
+}
+.fjc {
+  justify-content: center;
+}
+.fac {
+  align-items: center;
+}
+.fw {
+  flex-wrap: wrap;
+}
+.btn {
+  cursor: pointer;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+div.btn {
+  border: 1px solid #0004;
+  border-radius: 4px;
+  padding: 10px;
+  background: #fff;
+  text-align: center;
+  transition: background-color 0.3s;
+}
+div.btn:hover {
+  background: #0002;
+}
+.btn.unavailable {
+  opacity: 0.4;
+  cursor: default;
+}
+p {
+  width: 40%;
+  min-width: 500px;
+}
+.intro-links .fr {
+  margin-top: 10px;
+}
+.intro-links .fr img, .intro-links .fr, .intro-links i {
+  margin-right: 8px;
+}
+.demo-links .fr {
+  margin: 0px 5px;
+}
+.demo-links a {
+  margin-left: 3px;
+}
+#pixi-parent canvas {
+  border: 1px solid black;
+}
+.line {
+  fill: none;
+  stroke: #5555ff;
+  stroke-width: 2;
+}
+span.info {
+  font-size: 14px;
+  color: #000a;
+}
+h4 {
+  margin: 0; padding: 0;
+  color: #444;
+}
+#prediction {
+  width: 260px;
+  margin-left: 15px;
+}
+#prediction h4 {
+  font-size: 0px;
+  transition: font-size 0.4s;
+}
+#prediction h4 span {
+  font-size: 50%;
+}
+.nav-status {
+  background:#fff;
+  width:100%;
+  border-bottom: 1px solid #0002;
+}
+.nav-status h2 {
+  margin-right: 20px;
+}
+.nav-status i.btn {
+  margin-left: 15px;
+  margin-right: 15px;
+  font-size: 30px;
+}
+.nav-status .picturelink {
+  margin-right: 8px;
+}
+.nav-status .picturelink img, .nav-status .picturelink i {
+  margin-right: 4px;
+}
+.nav {
+  position: absolute;
+  top:0;
+  bottom:0;
+  width:200px;
+  background:#fff;
+  z-index: 2;
+  left:-220px;
+  transition: left 0.4s;
+  padding: 10px;
+}
+.nav.shown {
+  left:0;
+}
+.nav-cat {
+  margin-top: 5px;
+}
+.nav .nav-cat a {
+  margin-left: 20px;
+}
+.click-catcher {
+  position: absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s;
+  background: #000;
+}
+.click-catcher.shown {
+  opacity: 0.1;
+}
+#test-h {
+  font-size: 10px;
+  transition: font-size 1s;
+}
+#test-h span {
+  font-size: 50%;
+}
+.cat-canvases canvas {
+  margin: 0px 10px;
+}
+.snake-info-section {
+  flex: 0;
+  width: 500px;
+  margin-left: 20px;
+}
+.snake-selection {
+  display: inline-block;
+  cursor: pointer;
+  margin-right: 15px;
+  color: #00000088;
+  font-size: 14px;
+  transition: color 0.3s, font-size 0.3s;
+}
+.snake-selection.selected {
+  color: #000000;
+  font-size: 17px;
+}
+.underline {
+  text-decoration: underline;
+}
+#snake-env-controls {
+  margin-left:15px;
+}
+#snake-env-controls span {
+  margin: 0px 2px;
+  color: #00000088;
+  cursor: pointer;
+}
+#snake-env-controls span.selected {
+  margin: 0px 5px;
+  color: #000000;
+}

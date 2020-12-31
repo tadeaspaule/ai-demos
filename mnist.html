@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="assets/styles.css">
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<title>AI demos - Handwritten digits</title>
+	</head>
+
+	<body>
+		<div class="content">
+			<div class="fr" style="margin-bottom: 50px;">
+				<div id="pixi-parent" class="fc fac">
+					<span class="info">Try drawing a digit here</span>
+				</div>
+				<div id="prediction" class="fr">
+					<h4>0<span>(0%)</span></h4>
+					<h4>1<span>(0%)</span></h4>
+					<h4>2<span>(0%)</span></h4>
+					<h4>3<span>(0%)</span></h4>
+					<h4>4<span>(0%)</span></h4>
+					<h4>5<span>(0%)</span></h4>
+					<h4>6<span>(0%)</span></h4>
+					<h4>7<span>(0%)</span></h4>
+					<h4>8<span>(0%)</span></h4>
+					<h4>9<span>(0%)</span></h4>
+				</div>
+			</div>
+			<h4>How does it work?</h4>
+			<p>
+				Image classifiers often use <strong>convolution layers</strong>.
+				To put it simply, these look at a neighbourhood of inputs and "summarize" what they see into a higher-dimensional representation.
+				By chaining multiple after each other, you can learn high level features that then help classification.
+				For example, the first layer might learn to detect lines, edges or other local features,
+				while the later ones will put this information together and learn representations of shapes, such as where a cat's eyes are, etc.
+			</p>
+			<h4>The softmax function</h4>
+			<p>
+				Classifiers like this one tend to use a softmax function as output. You can think of it a probability distribution;
+				it gives a value for each label, and then normalizes them so they sum up to one.
+				You then typically take the label with the highest value and consider that your classification.
+			</p>
+		</div>
+	<script type="text/javascript" src="shared.bundle.js"></script><script type="text/javascript" src="vendor.bundle.js"></script><script type="text/javascript" src="mnist.bundle.js"></script></body>
+</html>
