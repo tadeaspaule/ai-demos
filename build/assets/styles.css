@@ -13,8 +13,9 @@ h1,h2,h3,h4 {
 }
 a {
   text-transform: lowercase;
-  color:#4444aa;
+  color:#3366aa;
   text-decoration: none;
+  font-weight: 500;
 }
 @font-face {
   font-family: raleway;
