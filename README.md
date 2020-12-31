@@ -8,6 +8,7 @@ You can find code of all agents used at https://github.com/tadeaspaule/ai-demos-
 ### Current list of demos
 - Handwritten digit classifier : [demo](https://tadeaspaule.com/ai-demos/mnist.html) | [code](https://github.com/tadeaspaule/ai-demos-notebooks/blob/master/cnn-handwritten-digit-classifier.ipynb)
 - Cat face generator : [demo](https://tadeaspaule.com/ai-demos/catgan.html) | [code](https://github.com/tadeaspaule/ai-demos-notebooks/blob/master/GAN-cat-faces.ipynb)
+- "Smart" snake playing : [demo](https://tadeaspaule.com/ai-demos/unintelligent-snakes.html) | [code](https://github.com/tadeaspaule/ai-demos/tree/master/src/unintelligent-snakes)
 
 ### How to get this running on your machine
 
