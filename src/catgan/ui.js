@@ -1,7 +1,4 @@
-import * as PIXI from 'pixi.js'
-
 var canvases = document.getElementsByTagName('canvas')
-// console.log(canvas.getContext('2d').createImageData(100,100))
 export function setup(clickGenerateCallback) {
   var generateBtn = document.getElementById('catgan-btn')
   generateBtn.addEventListener('click', clickGenerateCallback)

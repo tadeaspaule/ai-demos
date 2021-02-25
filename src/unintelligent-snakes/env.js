@@ -2,7 +2,8 @@ import {randint} from '../common.js'
 
 export default class SnakeEnv {
   constructor(map_width,map_height,food_reward=1,base_reward=0,dead_reward=-1) {
-    this._moves = [
+    // initialize global constants
+    this._observation_directions = [
       [-1,-1],[0,-1],[1,-1],[1,0],
       [1,1],[0,1],[-1,1],[-1,0]
     ]
@@ -10,6 +11,7 @@ export default class SnakeEnv {
     this.OBSERVATION_SPACE_VALUES = 24
     this.map_width = map_width
     this.map_height = map_height
+    // initialize 2d board representation
     this.map = []
     for (var x = 0; x < map_width; x++) {
       this.map.push([])
@@ -17,12 +19,17 @@ export default class SnakeEnv {
         this.map[this.map.length-1].push(0)
       }
     }
+    // initialize rewards
     this._DEAD_REWARD = dead_reward
     this._FOOD_REWARD = food_reward
     this._BASE_REWARD = base_reward
+    // run setup, for body, food, etc
     this.reset()
   }
 
+  /**
+   * Returns a deep copy of this environment
+   */
   clone () {
     var cloneEnv = new SnakeEnv(this.map_width,this.map_height,this._FOOD_REWARD,this._BASE_REWARD,this._DEAD_REWARD)
     for (var x = 0; x < this.map_width; x++) {
@@ -39,6 +46,10 @@ export default class SnakeEnv {
     return cloneEnv
   }
 
+  /**
+   * Returns [x,y] coordinates for a free tile on the map
+   * If no tiles are free, throws an Exception
+   */
   _getFreePos() {
     var x = randint(0,this.map_width), y = randint(0,this.map_height)
     var origx = x, origy = y
@@ -54,6 +65,9 @@ export default class SnakeEnv {
     return [x,y]
   }
 
+  /**
+   * Generates food on a free tile of the board
+   */
   _generateFood() {
     var freePos = this._getFreePos()
     this.food_x = freePos[0]
@@ -61,14 +75,17 @@ export default class SnakeEnv {
     this.map[this.food_x][this.food_y] = 2
   }
 
-  /* returns 24-element array
-    #1 8 is distances to the walls
-    #2 8 is distances to the body
-    #3 8 is distances to food
-    order in each 8 is NW,N,NE,E,SE,S,SW,W (using cardinal directions)
-    lowest value is 1 (so obs[1] == 1 if a wall is right above you)
-    this observation structure was inspired by Code Bullet
-    https://www.youtube.com/c/CodeBullet
+ /**
+  * Get an observation vector of the current state
+  * Format: array of size 24. It's effectively 3 groups of 8
+  * #1 8 is distances to the walls
+  * #2 8 is distances to the body
+  * #3 8 is distances to food
+  * order in each 8 is NW,N,NE,E,SE,S,SW,W (using cardinal directions)
+  * lowest value is 1 (so obs[1] == 1 if a wall is right above you)
+  * this observation structure was inspired by Code Bullet
+  * https://www.youtube.com/c/CodeBullet
+  * @returns {Object} observation vector
   */
   _getObservation() {
     var obs = []
@@ -85,8 +102,8 @@ export default class SnakeEnv {
     obs[7] = this.head_x + 1;             // left
     // +1 so that when you're right next to it, it's a 1 not a 0
     for (var i = 0; i < 8; i++) {
-      var x = this.head_x + this._moves[i][0]
-      var y = this.head_y + this._moves[i][1]
+      var x = this.head_x + this._observation_directions[i][0]
+      var y = this.head_y + this._observation_directions[i][1]
       var foundFood = false
       var foundBody = false
       var counter = 1
@@ -100,15 +117,19 @@ export default class SnakeEnv {
           foundFood = true
         }
         counter += 1
-        x += this._moves[i][0]
-        y += this._moves[i][1]
+        x += this._observation_directions[i][0]
+        y += this._observation_directions[i][1]
       }
     }
     return obs
   }
 
-  //  0 -> up, 1 -> right, 2 -> down, 3 -> left
-  // returns observation,reward,done
+  /**
+   * Take an action in the environment and alter it by doing so
+   * @param {Number} action - 0: up, 1: right, 2: down, 3: left
+   * @param {*} returnObservation - whether to calculate and return an observation vector
+   * @returns {Object} object with observation, reward, and done fields
+   */
   step(action, returnObservation = true) {
     this._lastAction = action
     var reward;
@@ -118,12 +139,19 @@ export default class SnakeEnv {
     else reward = this._move(-1,0)
     var observation = returnObservation ? this._getObservation() : null
     return {
-      observation:observation,
-      reward: reward,
+      observation,
+      reward,
       done: reward == this._DEAD_REWARD || this.body.length + 1 >= this.map_width * this.map_height
     }
   }
 
+  /**
+   * Helper method for movement
+   * Handles collisions & food eating
+   * @param {Number} vx - Change in x direction
+   * @param {Number} vy - Change in y direction
+   * @returns {Number} reward for reaching the new state
+   */
   _move(vx,vy) {
     if (this.head_x+vx < 0 || this.head_x+vx >= this.map_width) return this._DEAD_REWARD
     if (this.head_y+vy < 0 || this.head_y+vy >= this.map_height) return this._DEAD_REWARD
@@ -137,6 +165,12 @@ export default class SnakeEnv {
     return this._BASE_REWARD
   }
 
+  /**
+   * Helper method for moving to a specific tile
+   * @param {Number} x - New x position of head
+   * @param {Number} y - New y position of head
+   * @param {Boolean} pop_tail - Whether to pop the tail position
+   */
   _moveto(x,y,pop_tail=true) {
     this.head_x = x
     this.head_y = y
@@ -149,6 +183,13 @@ export default class SnakeEnv {
     }
   }
 
+  /**
+   * Reset & re-initialization method
+   * - clears the board (sets to 0s)
+   * - initializes a 1-length snake in a random position
+   * - generates food
+   * @returns observation vector
+   */
   reset() {
     for (var x = 0; x < this.map_width; x++) {
       for (var y = 0; y < this.map_height; y++) {
@@ -165,7 +206,12 @@ export default class SnakeEnv {
     return this._getObservation()
   }
 
-  // for tree search
+  /**
+   * Generates possible successor environments (states) for each available action
+   * Ignores successors where the snake dies
+   * @param {Boolean} returnObservation - whether to set .obs field with an observation vector for each successor
+   * @returns Array of {env,obs,reward,done} objects
+   */
   getSuccessors(returnObservation = false) {
     var successors = {}
     for (var i = 0; i < 4; i++) {

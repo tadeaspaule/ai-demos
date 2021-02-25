@@ -1,9 +1,17 @@
 import * as PIXI from 'pixi.js'
-import * as d3 from 'd3'
+
+// variables for UI size (of generated pictures)
+// since model is trained on 28x28 pictures, here you decide what ratio you want to use (56x56 (so 2x)? more?)
 const blocks = 10
 const size = 28 * blocks
 const w = size, h = size
 
+
+export function setup(startDrawingCallback) {
+  setupDrawing(startDrawingCallback)
+}
+
+// state of the user input board
 var app, g;
 var board = []
 for (var y = 0; y < 28; y++) {
@@ -12,11 +20,7 @@ for (var y = 0; y < 28; y++) {
     board[board.length-1].push([0.0])
   }
 }
-export function setup(startDrawingCallback) {
-  setupDrawing(startDrawingCallback)
-}
 function setupDrawing (startDrawingCallback) {
-  // App with width and height of the page
   app = new PIXI.Application({
     width: w,
     height: h,

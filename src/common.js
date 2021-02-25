@@ -5,6 +5,9 @@ function siteLink(path) {
   else return `/ai-demos${path}`
 }
 
+/**
+ * Sets up the top page navbar; project name, GitHub links, etc
+ */
 export function baseSetup() {
   var hrefParts = window.location.href.split('/')
   var currentPage = hrefParts[hrefParts.length-1]

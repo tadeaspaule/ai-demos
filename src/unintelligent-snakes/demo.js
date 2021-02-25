@@ -1,7 +1,9 @@
 import {baseSetup,randint} from '../common.js'
 import * as ui from './ui.js'
+
 baseSetup()
 
+// naive searcher
 const NBFSmaxDepth = 6;
 function naiveBFS (game,stepResult) {
   var succ = game.env.getSuccessors()
@@ -169,6 +171,8 @@ function cs (game,stepResult) {
   csExpandLeaves(csTree,csTreeHeight)
   game.sendAction(csPath.pop())
 }
+
+// slow optimal
 /*
 0 -> get to top left corner
 1 -> zig zag to the bottom
@@ -230,7 +234,7 @@ var variants = [
     processObservation: cs
   },
   {
-    name: "Slow-optimal",
+    name: "Slow optimal",
     description: 
     `Always manages to win by following a pre-set path.
     <br><br>

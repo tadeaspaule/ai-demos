@@ -1,9 +1,12 @@
 import * as PIXI from 'pixi.js'
 import SnakeEnv from './env.js'
-// PIXI.settings.TARGET_FPMS = 1 / 1000
+
 const canvasWidth = 400, canvasHeight = 400
 const snakeContainerEl = document.getElementById('snake-container')
 const snakeGameEl = document.getElementById('snake-game')
+/**
+ * Wrapper for the game UI
+ */
 class SnakeGame {
   constructor(w,h,processObservation) {
     this.env = new SnakeEnv(w,h)
@@ -73,8 +76,14 @@ class SnakeGame {
   }
 }
 
-var g = null, selected = 0, snakeVariants = [],
-  selectionElems = [], descriptionElem = null
+// game variable
+var g = null
+// index of currently selected snake model
+var selected = 0
+// list of all snake variants, initialized in setup
+var snakeVariants = []
+// UI elements
+var selectionElems = [], descriptionElem = null
 
 function updateInfoSection(newSelected) {
   g.processObservation = snakeVariants[newSelected].processObservation
